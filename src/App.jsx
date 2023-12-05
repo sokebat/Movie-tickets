@@ -1,15 +1,25 @@
-import Card from "./components/Card";
-import Navbar from "./components/Navbar";
-import Eventdetails from "./pages/Eventdetails";
-import Home from "./pages/Home";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+import { Layout, Home, Movies, Concerts } from "./components/Index";
 
-export default function App() {
-  return (
-    <>
-      <Navbar />
-      <Home />
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+      <Route path="" element={<Home />} />
+      <Route path="/concerts" element={<Concerts />} />
+      <Route path="/movies" element={<Movies />} />
 
-      {/* <Eventdetails /> */}
-    </>
-  );
-}
+      {/* <Route path="/*" element={ } /> */}
+    </Route>
+  )
+);
+
+const App = () => {
+  return <RouterProvider router={router} />;
+};
+
+export default App;

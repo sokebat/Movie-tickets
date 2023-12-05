@@ -4,9 +4,7 @@ const Home = () => {
   return (
     <div className="grid grid-rows-4 grid-flow-col gap-4">
       <Card />
-      <Card />
-      <Card />
-      <Card />
+      
     </div>
   );
 };

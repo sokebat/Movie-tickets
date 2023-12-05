@@ -1,5 +1,6 @@
 import React from "react";
 import { FaRegPaperPlane } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -12,18 +13,22 @@ const Navbar = () => {
       </div>
 
       <div className="hidden  md:flex space-x-6">
-        <a href="#" className=" text-white text-xl hover:text-blue-200">
+        <Link to="/" className=" text-white text-xl hover:text-blue-200">
           Home
-        </a>
-        <a href="#" className=" text-white text-xl hover:text-blue-200">
+        </Link>
+
+        <Link
+          to="/concerts"
+          className=" text-white text-xl hover:text-blue-200"
+        >
           Concerts
-        </a>
-        <a href="#" className="text-white text-xl hover:text-blue-200">
+        </Link>
+        <Link to="/movies" className="text-white text-xl hover:text-blue-200">
           Movies
-        </a>
-        <a href="#" className="text-white text-xl hover:text-blue-200">
+        </Link>
+        <Link to="" className="text-white text-xl hover:text-blue-200">
           Theater Events
-        </a>
+        </Link>
       </div>
 
       <div className="hidden md:flex gap-4">
