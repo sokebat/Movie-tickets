@@ -1,7 +1,6 @@
 import React from "react";
 import Card from "../components/Card";
-import { IoCalendarSharp } from "react-icons/io5";
-import { IoLocationSharp } from "react-icons/io5";
+import { IoCalendarSharp, IoLocationSharp } from "react-icons/io5";
 import { GoPlus } from "react-icons/go";
 import { TbMinus } from "react-icons/tb";
 
@@ -47,7 +46,7 @@ const Eventdetails = () => {
               View on Map
             </a>
 
-            <hr className="border border-[#6d737d]" />
+            <hr className="border border-[#252D3C]" />
 
             {/* Select Tickets */}
 
@@ -76,8 +75,8 @@ const Eventdetails = () => {
 
             {/* Check Out */}
             <div className="flex items-center mt-5">
-              <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
-                Check out
+              <button className=" bg-[#E14658] w-full rounded-lg text-lg text-white py-2 ">
+                Check out for
               </button>
             </div>
           </div>

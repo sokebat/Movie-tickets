@@ -2,7 +2,7 @@ import React from "react";
 
 const Card = () => {
   return (
-    <div className="relative w-80 h-auto border rounded-lg overflow-hidden">
+    <div className="relative w-80 h-auto rounded-xl overflow-hidden">
       <img
         className="object-cover w-full h-43"
         src="https://images.unsplash.com/photo-1530878955558-a6c31b9c97db?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bmljZXxlbnwwfHwwfHx8MA%3D%3D"
@@ -13,18 +13,18 @@ const Card = () => {
         Movies
       </p>
 
-      <div className="bg-white p-4">
-        <p className="text-xl text-gray-800 font-bold mb-2">
+      <div className="text-white p-4">
+        <p className="text-xl font-bold mb-2">
           Title: Movie Title
         </p>
 
         <section className="flex gap-4">
           <div>
-            <h4 className="font-bold text-gray-600">Date:</h4>
+            <h4 className="font-bold">Date:</h4>
             <p>April 30, 2022</p>
           </div>
           <div>
-            <h4 className="font-bold text-gray-600">Location:</h4>
+            <h4 className="font-bold">Location:</h4>
             <p>Kathmandu, Nepal</p>
           </div>
         </section>
