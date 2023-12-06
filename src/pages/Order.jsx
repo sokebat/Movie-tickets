@@ -39,7 +39,6 @@ const Order = () => {
   };
 
   const handleConfirmAndPay = () => {
-    // Manually trigger form submission
     handleSubmit(onSubmit)();
   };
 
