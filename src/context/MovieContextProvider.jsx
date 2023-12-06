@@ -4,6 +4,9 @@ import { MovieContext } from "./MovieContext";
 const MovieContextProvider = ({ children }) => {
   const [movies, setMovies] = useState([]);
 
+  const [count, setCount] = useState(1);
+  const [total, setTotal] = useState(500.0);
+
   const fetchMovies = async () => {
     try {
       const search = "man";
@@ -15,7 +18,7 @@ const MovieContextProvider = ({ children }) => {
       setMovies(data.Search);
     } catch (error) {
       // alert("Error Occured", error);
-      console.error("Error Occured",error)
+      console.error("Error Occured", error);
     }
   };
 
@@ -24,7 +27,7 @@ const MovieContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <MovieContext.Provider value={{ movies, fetchMovies }}>
+    <MovieContext.Provider value={{ movies, count, total, setTotal, setCount }}>
       {children}
     </MovieContext.Provider>
   );

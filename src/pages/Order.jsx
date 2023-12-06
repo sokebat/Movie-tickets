@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { MovieContext } from "../context/MovieContext";
 
 const Order = () => {
   const countries = [
@@ -26,9 +27,14 @@ const Order = () => {
     "United Kingdom",
   ];
 
+  const { count, total } = useContext(MovieContext);
+  // const [totalAfterTax, setTotalAfterTax] = useState()
+
+  const totalAfterTax =total +130.00
+
   return (
-    <div className="flex justify-around">
-      <div className="bg-[#1C1C24] p-8 rounded shadow-md w-1/2 mb-4 sm:mb-0 border-[#252D3C] border-2">
+    <div className="flex justify-around items-center">
+      <div className="bg-[#1C1C24] p-8 rounded shadow-md w-1/2 my-4 sm:mb-0 border-[#252D3C] border-2">
         <h2 className="text-2xl font-bold mb-4 text-white">Information</h2>
 
         <form>
@@ -175,8 +181,8 @@ const Order = () => {
         <div className="my-4">
           <div className="flex justify-between items-center ">
             <p className="text-sm text-[#97ABC0]"> Normal</p>
-            <p className="text-white"> (X2)</p>
-            <p className="text-white">$5000.00</p>
+            <p className="text-white"> X{count}</p>
+            <p className="text-white">${total}</p>
           </div>
           <div className="flex justify-between items-center  ">
             <p className="text-[#97ABC0]">Tax (13%)</p>
@@ -184,7 +190,7 @@ const Order = () => {
           </div>
           <div className="flex justify-between items-center text-white">
             <p className="text-[#97ABC0]">Sub Total</p>
-            <p>$1000.00</p>
+            <p>${total}</p>
           </div>
           <div className="flex justify-between items-center ">
             <p className="text-[#97ABC0]">Discount (0%)</p>
@@ -195,7 +201,7 @@ const Order = () => {
         <div className="flex justify-between items-center font-bold text-xl my-3 ">
           <p className="text-[#97ABC0]">Total</p>
           <p className="text-white">
-            <span className="text-[#97ABC0] text-sm mr-3">USD</span>$1130.00
+            <span className="text-[#97ABC0] text-sm mr-3">USD</span>${totalAfterTax}
           </p>
         </div>
         <button className=" bg-[#E14658] w-full rounded-lg text-lg text-white py-2 mb-0">
