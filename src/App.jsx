@@ -4,12 +4,13 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import { Layout, Home, Movies, Concerts } from "./components/Index";
+import { Layout, Home, Movies, Concerts,Eventdetails } from "./components/Index";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route path="" element={<Home />} />
+      <Route path="/event-detail:eid" element={<Eventdetails />} />
       <Route path="/concerts" element={<Concerts />} />
       <Route path="/movies" element={<Movies />} />
 

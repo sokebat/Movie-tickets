@@ -28,7 +28,7 @@ const Order = () => {
 
   return (
     <div className="flex justify-around">
-      <div className="bg-[#1C1C24] p-8 rounded shadow-md w-1/2 mb-4 sm:mb-0">
+      <div className="bg-[#1C1C24] p-8 rounded shadow-md w-1/2 mb-4 sm:mb-0 border-[#252D3C] border-2">
         <h2 className="text-2xl font-bold mb-4 text-white">Information</h2>
 
         <form>
@@ -159,12 +159,11 @@ const Order = () => {
         </form>
       </div>
 
-      <div className="bg-[#1C1C24] p-5 rounded shadow-md sm:w-1/3 mb-4 sm:mb-0">
-        {" "}
+      <div className="bg-[#1C1C24] h-auto p-5 rounded border-[#252D3C] border-2 mb-0">
         <h2 className="text-2xl font-bold mb-4 text-white">Checkout Summary</h2>
         <hr className="border border-[#252D3C]" />
         <div className="mb-4">
-          <p className="text-lg font-semibold text-white">
+          <p className="text-lg font-semibold mt-2 text-white">
             Antman and the Wasp Quantumania
           </p>
           <section className=" flex gap-3">
@@ -196,11 +195,10 @@ const Order = () => {
         <div className="flex justify-between items-center font-bold text-xl my-3 ">
           <p className="text-[#97ABC0]">Total</p>
           <p className="text-white">
-            {" "}
             <span className="text-[#97ABC0] text-sm mr-3">USD</span>$1130.00
           </p>
         </div>
-        <button className=" bg-[#E14658] w-full rounded-lg text-lg text-white py-2 ">
+        <button className=" bg-[#E14658] w-full rounded-lg text-lg text-white py-2 mb-0">
           Confirm & Pay
         </button>
       </div>

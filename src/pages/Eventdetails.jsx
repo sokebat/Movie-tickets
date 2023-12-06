@@ -5,6 +5,8 @@ import { GoPlus } from "react-icons/go";
 import { TbMinus } from "react-icons/tb";
 
 const Eventdetails = () => {
+
+  
   return (
     <>
       <div>
