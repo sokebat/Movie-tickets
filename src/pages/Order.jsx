@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { MovieContext } from "../context/MovieContext";
+import { useForm } from "react-hook-form";
 
 const Order = () => {
   const countries = [
@@ -28,16 +29,26 @@ const Order = () => {
   ];
 
   const { count, total } = useContext(MovieContext);
-  // const [totalAfterTax, setTotalAfterTax] = useState()
+  const { register, handleSubmit } = useForm();
+  const [formData, setFormData] = useState([]);
 
-  const totalAfterTax =total +130.00
+  const totalAfterTax = total + 130.0;
+
+  const onSubmit = (data) => {
+    setFormData(data);
+  };
+
+  const handleConfirmAndPay = () => {
+    // Manually trigger form submission
+    handleSubmit(onSubmit)();
+  };
 
   return (
     <div className="flex justify-around items-center">
       <div className="bg-[#1C1C24] p-8 rounded shadow-md w-1/2 my-4 sm:mb-0 border-[#252D3C] border-2">
         <h2 className="text-2xl font-bold mb-4 text-white">Information</h2>
 
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
             <label
               className="block text-sm font-semibold mb-2 text-white"
@@ -46,9 +57,7 @@ const Order = () => {
               Full Name
             </label>
             <input
-              type="text"
-              id="fullName"
-              name="fullName"
+              {...register("FirstName")}
               placeholder="eg. Jane Copper"
               className="w-full p-2 bg-[#1C1C24]  border-[#252D3C] border-2 rounded text-white"
               required
@@ -64,9 +73,7 @@ const Order = () => {
                 Email
               </label>
               <input
-                type="email"
-                id="email"
-                name="email"
+                {...register("E-mail")}
                 placeholder="eg. janecopper@xyz.com"
                 className="w-full p-2 bg-[#1C1C24] border-[#252D3C] border-2 rounded text-white"
                 required
@@ -81,9 +88,7 @@ const Order = () => {
                 Address
               </label>
               <input
-                type="text"
-                id="address"
-                name="address"
+                {...register("Address")}
                 placeholder="eg. 123 Main Street"
                 className="w-full p-2 bg-[#1C1C24] border-[#252D3C] border-2 rounded text-white"
                 required
@@ -98,8 +103,7 @@ const Order = () => {
                 Country
               </label>
               <select
-                id="country"
-                name="country"
+                {...register("Country")}
                 className="w-full p-2 bg-[#1C1C24] border-[#252D3C] border-2 rounded text-white"
                 required
               >
@@ -119,9 +123,7 @@ const Order = () => {
                 State
               </label>
               <input
-                type="text"
-                id="state"
-                name="state"
+                {...register("State")}
                 placeholder="Your State"
                 className="w-full p-2 bg-[#1C1C24] border-[#252D3C] border-2 rounded text-white"
                 required
@@ -136,9 +138,7 @@ const Order = () => {
                 City
               </label>
               <input
-                type="text"
-                id="city"
-                name="city"
+                {...register("City")}
                 placeholder="Your City"
                 className="w-full p-2 bg-[#1C1C24] border-[#252D3C] border-2 rounded text-white"
                 required
@@ -153,9 +153,7 @@ const Order = () => {
                 Zip/Post Code
               </label>
               <input
-                type="text"
-                id="zipCode"
-                name="zipCode"
+                {...register("Post_Code")}
                 placeholder="Your Zip/Post Code"
                 className="w-full p-2 bg-[#1C1C24] border-[#252D3C] border-2 rounded text-white"
                 required
@@ -163,6 +161,7 @@ const Order = () => {
             </div>
           </div>
         </form>
+        {formData}
       </div>
 
       <div className="bg-[#1C1C24] h-auto p-5 rounded border-[#252D3C] border-2 mb-0">
@@ -201,10 +200,15 @@ const Order = () => {
         <div className="flex justify-between items-center font-bold text-xl my-3 ">
           <p className="text-[#97ABC0]">Total</p>
           <p className="text-white">
-            <span className="text-[#97ABC0] text-sm mr-3">USD</span>${totalAfterTax}
+            <span className="text-[#97ABC0] text-sm mr-3">USD</span>$
+            {totalAfterTax}
           </p>
         </div>
-        <button className=" bg-[#E14658] w-full rounded-lg text-lg text-white py-2 mb-0">
+        <button
+          type="button"
+          onClick={handleConfirmAndPay}
+          className="bg-[#E14658] w-full rounded-lg text-lg text-white py-2 mb-0 mt-4"
+        >
           Confirm & Pay
         </button>
       </div>
