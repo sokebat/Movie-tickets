@@ -1,18 +1,31 @@
 import React, { useContext, useRef } from "react";
 import Scissor from "../components/Invoice/Scissor";
 import { FaRegPaperPlane } from "react-icons/fa";
-import Card from "../components/Invoice/Card";
+import Ticket from "../components/Invoice/Ticket";
 import { MovieContext } from "../context/MovieContext";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
 const Invoice = () => {
-  const { movies, count, total, formData, totalAfterTax } =
+  const { movies, count, total, formData, totalAfterTax, imgUrl } =
     useContext(MovieContext);
 
-  const { FirstName, Email, Address, Country, State, City, Post_Code } =
+  const { firstName, email, address, country, state, city, postCode } =
     formData;
   const pdfRef = useRef();
+
+  const renderTickets = () => {
+    const tickets = [];
+    for (let i = 0; i < count; i++) {
+      tickets.push(
+        <div key={i}>
+          <Scissor />
+          <Ticket />
+        </div>
+      );
+    }
+    return tickets;
+  };
 
   const downloadPdf = () => {
     const input = pdfRef.current;
@@ -53,9 +66,9 @@ const Invoice = () => {
         <h1 className="text-2xl font-semibold mt-4">Invoice</h1>
         <div className="flex justify-between items-center text-gray-600">
           <div className="mt-8">
-            <p className="text-xl font-semibold">Invoice to {FirstName}</p>
+            <p className="text-xl font-semibold">Invoice to {firstName}</p>
             <p className="my-2">
-              {Address} {State} {Country}
+              {address} {state} {country}
             </p>
             <p>Sunsari, Nepal</p>
           </div>
@@ -96,14 +109,18 @@ const Invoice = () => {
             <p className="mb-2">Invoice Total: USD ${totalAfterTax}</p>
           </div>
 
-          <Scissor />
-
-          <Card />
+          <div>
+            {renderTickets()}
+            <Scissor />
+          </div>
+          <button
+            className="text-white mt-6 text-xl bg-[#E14658] p-2 rounded-lg border-red hover:text-blue-200"
+            onClick={downloadPdf}
+          >
+            Download PDF
+          </button>
         </div>
       </div>
-      <button className=" text-white" onClick={downloadPdf}>
-        Download PDF
-      </button>
     </>
   );
 };

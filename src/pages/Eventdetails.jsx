@@ -7,18 +7,20 @@ import { TbMinus } from "react-icons/tb";
 import { MovieContext } from "../context/MovieContext";
 
 const Eventdetails = () => {
-  const { movies, count, setCount, total, setTotal } = useContext(MovieContext);
+  const { movies, count, setCount, total, setTotal, setTickets } =
+    useContext(MovieContext);
   const { id } = useParams();
   const movie = movies[id];
+
+ 
+    setTickets(movie);
+  
+
   const navigate = useNavigate();
 
   useEffect(() => {
     setTotal(count * 500.0);
   }, [count]);
-
-  if (!movies || id >= movies.length) {
-    return <p>No data available for this event.</p>;
-  }
 
   return (
     <div className=" container flex justify-evenly items-center ">

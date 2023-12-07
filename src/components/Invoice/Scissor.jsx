@@ -3,7 +3,7 @@ import { RiScissorsCutLine } from "react-icons/ri";
 
 const Scissor = () => {
   return (
-    <div className="flex gap-0">
+    <div className="flex gap-0 my-2">
       <div>
         <RiScissorsCutLine color="gray" />
       </div>
