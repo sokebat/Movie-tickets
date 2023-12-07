@@ -64,9 +64,12 @@ const Information = () => {
                 <input
                   {...register("email", {
                     required: "This field is required",
-                    maxLength: 20,
+                    pattern: {
+                      value:
+                        /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/i,
+                      message: "Invalid email address",
+                    },
                   })}
-                  type="email"
                   placeholder="eg. janecopper@xyz.com"
                   className={`w-full p-2 bg-[#1C1C24] border-[#252D3C] border-2 rounded text-white ${
                     errors.email ? "border-red-500" : ""

@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
-import Card from "../components/Card";
+import Card from "../components/Card/Card";
 import { MovieContext } from "../context/MovieContext";
 import { Link } from "react-router-dom";
-import Invoice from "./Invoice";
 
 const Home = () => {
   const { movies } = useContext(MovieContext);
