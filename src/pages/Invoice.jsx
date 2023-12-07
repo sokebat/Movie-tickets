@@ -3,15 +3,13 @@ import Scissor from "../components/Invoice/Scissor";
 import { FaRegPaperPlane } from "react-icons/fa";
 import Ticket from "../components/Invoice/Ticket";
 import { MovieContext } from "../context/MovieContext";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
+import { useReactToPrint } from "react-to-print";
 
 const Invoice = () => {
-  const { movies, count, total, formData, totalAfterTax, imgUrl } =
-    useContext(MovieContext);
+  const { count, formData, totalAfterTax, tickets } = useContext(MovieContext);
 
-  const { firstName, email, address, country, state, city, postCode } =
-    formData;
+  const { fullName, address, country, state, city } = formData;
+
   const pdfRef = useRef();
 
   const renderTickets = () => {
@@ -27,29 +25,11 @@ const Invoice = () => {
     return tickets;
   };
 
-  const downloadPdf = () => {
-    const input = pdfRef.current;
-    html2canvas(input).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("p", "mm", "a4", true);
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = pdf.internal.pageSize.getHeight();
-      const imgWidth = canvas.width;
-      const imgHeight = canvas.height;
-      const ratio = Math.min(pdfWidth / imgWidth, pdfHeight, imgHeight);
-      const imgX = (pdfWidth - imgWidth * ratio) / 2;
-      const imgY = 30;
-      pdf.addImage(
-        imgData,
-        "PNG",
-        imgX,
-        imgY,
-        imgWidth * ratio,
-        imgHeight * ratio
-      );
-      pdf.save("Invoice.pdf");
-    });
-  };
+  const generatePDF = useReactToPrint({
+    content: () => pdfRef.current,
+    documentTitle: "Movie-Tickets",
+    onafterprint: () => alert("Pdf is printed"),
+  });
 
   return (
     <>
@@ -66,15 +46,17 @@ const Invoice = () => {
         <h1 className="text-2xl font-semibold mt-4">Invoice</h1>
         <div className="flex justify-between items-center text-gray-600">
           <div className="mt-8">
-            <p className="text-xl font-semibold">Invoice to {firstName}</p>
+            <p className="text-xl font-semibold">Invoice to {fullName}</p>
             <p className="my-2">
-              {address} {state} {country}
+              {address},{city}
             </p>
-            <p>Sunsari, Nepal</p>
+            <p>
+              {state} ,{country}
+            </p>
           </div>
           <div className=" ">
             <p className="text-gray-600 mb-2">Invoice ID: YCCURW-000000</p>
-            <p className="text-gray-600">Order Date: 10/05/2022</p>
+            <p className="text-gray-600">Order Date: 12/09/2023</p>
           </div>
         </div>
 
@@ -95,8 +77,8 @@ const Invoice = () => {
             <tbody>
               <tr className="bg-white">
                 <td className="border py-2 text-center">1</td>
-                <td className="border py-2 text-center">title</td>
-                <td className="border py-2 text-center">Concert</td>
+                <td className="border py-2 text-center">{tickets.Title}</td>
+                <td className="border py-2 text-center">{tickets.Type}</td>
                 <td className="border py-2 text-center">x{count}</td>
                 <td className="border py-2 text-center">$500.00</td>
                 <td className="border py-2 text-center">$0.00</td>
@@ -115,7 +97,7 @@ const Invoice = () => {
           </div>
           <button
             className="text-white mt-6 text-xl bg-[#E14658] p-2 rounded-lg border-red hover:text-blue-200"
-            onClick={downloadPdf}
+            onClick={generatePDF}
           >
             Download PDF
           </button>

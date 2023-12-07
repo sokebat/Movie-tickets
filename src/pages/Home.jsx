@@ -8,7 +8,7 @@ const Home = () => {
   const { movies } = useContext(MovieContext);
 
   return (
-    <div className="mx-auto border-2 mt-5 p-4">
+    <div className=" container mx-auto mt-5 p-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4gap-4">
         {movies ? (
           movies.map((movie, i) => (

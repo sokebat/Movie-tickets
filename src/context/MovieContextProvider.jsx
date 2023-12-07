@@ -8,7 +8,7 @@ const MovieContextProvider = ({ children }) => {
   const [total, setTotal] = useState(500.0);
   const [totalAfterTax, setTotalAfterTax] = useState();
   const [formData, setFormData] = useState({
-    firstName: "",
+    fullName: "",
     email: "",
     address: "",
     country: "",
@@ -18,7 +18,6 @@ const MovieContextProvider = ({ children }) => {
   });
 
   const [tickets, setTickets] = useState("");
-  console.log(tickets);
 
   const fetchMovies = async () => {
     try {

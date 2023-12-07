@@ -12,9 +12,7 @@ const Eventdetails = () => {
   const { id } = useParams();
   const movie = movies[id];
 
- 
-    setTickets(movie);
-  
+  setTickets(movie);
 
   const navigate = useNavigate();
 
@@ -23,10 +21,10 @@ const Eventdetails = () => {
   }, [count]);
 
   return (
-    <div className=" container flex justify-evenly items-center ">
+    <div className=" container mx-auto flex justify-around items-center ">
       <Card {...movie} />
 
-      <div className=" w-4/12 h-auto p-6 bg-[#1C1C24] rounded-lg ">
+      <div className="p-6 bg-[#1C1C24] rounded-lg ">
         <h2 className="text-2xl text-white font-semibold m-2">Event Details</h2>
         <hr className="border border-[#6d737d]" />
 
@@ -74,7 +72,7 @@ const Eventdetails = () => {
               <div
                 className="text-white bg-[#292932]   rounded p-1"
                 onClick={() => {
-                  setCount(count - 1);
+                  if (count > 1) setCount(count - 1);
                 }}
               >
                 <TbMinus />
@@ -83,7 +81,7 @@ const Eventdetails = () => {
               <div
                 className="text-white bg-[#E14658] rounded p-1"
                 onClick={() => {
-                  setCount(count + 1);
+                  if (count !== 10) setCount(count + 1);
                 }}
               >
                 <GoPlus />
@@ -96,7 +94,7 @@ const Eventdetails = () => {
           <button
             className=" bg-[#E14658] w-full rounded-lg text-lg text-white py-2 "
             onClick={() => {
-              navigate("/order");
+              navigate("/information");
             }}
           >
             Check out for USD ${total}

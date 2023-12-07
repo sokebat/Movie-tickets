@@ -3,8 +3,8 @@ import Layout from "./Layout/Layout";
 import Concerts from "../pages/Concerts";
 import Movies from "../pages/Movies";
 import Eventdetails from "../pages/Eventdetails";
-import Order from "../pages/Order";
+import Information from "../pages/Information";
 import Invoice from "../pages/Invoice";
 
 
-export { Home, Layout, Concerts, Movies, Eventdetails, Order, Invoice }
+export { Home, Layout, Concerts, Movies, Eventdetails, Information, Invoice }
