@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import Card from "../components/Card";
 import { useNavigate, useParams } from "react-router-dom";
 import { IoCalendarSharp, IoLocationSharp } from "react-icons/io5";
@@ -15,6 +15,10 @@ const Eventdetails = () => {
   useEffect(() => {
     setTotal(count * 500.0);
   }, [count]);
+
+  if (!movies || id >= movies.length) {
+    return <p>No data available for this event.</p>;
+  }
 
   return (
     <div className=" container flex justify-evenly items-center ">

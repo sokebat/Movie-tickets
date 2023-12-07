@@ -11,6 +11,7 @@ import {
   Concerts,
   Eventdetails,
   Order,
+  Invoice,
 } from "./components/Index";
 
 const router = createBrowserRouter(
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
       <Route path="/concerts" element={<Concerts />} />
       <Route path="/movies" element={<Movies />} />
       <Route path="/order" element={<Order />} />
+      <Route path="/invoice" element={<Invoice />} />
 
       {/* <Route path="/*" element={ } /> */}
     </Route>

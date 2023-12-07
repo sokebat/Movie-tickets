@@ -6,6 +6,17 @@ const MovieContextProvider = ({ children }) => {
 
   const [count, setCount] = useState(1);
   const [total, setTotal] = useState(500.0);
+  const [totalAfterTax, setTotalAfterTax] = useState();
+
+  const [formData, setFormData] = useState({
+    FirstName: "",
+    Email: "",
+    Address: "",
+    Country: "",
+    State: "",
+    City: "",
+    Post_Code: "",
+  });
 
   const fetchMovies = async () => {
     try {
@@ -27,7 +38,19 @@ const MovieContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <MovieContext.Provider value={{ movies, count, total, setTotal, setCount }}>
+    <MovieContext.Provider
+      value={{
+        movies,
+        count,
+        total,
+        setTotal,
+        setCount,
+        setFormData,
+        formData,
+        setTotalAfterTax,
+        totalAfterTax,
+      }}
+    >
       {children}
     </MovieContext.Provider>
   );

@@ -1,38 +1,22 @@
 import React, { useContext, useState } from "react";
 import { MovieContext } from "../context/MovieContext";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const Order = () => {
-  const countries = [
-    "Nepal",
-    "China",
-    "India",
-    "United States",
-    "Indonesia",
-    "Pakistan",
-    "Brazil",
-    "Nigeria",
-    "Bangladesh",
-    "Russia",
-    "Mexico",
-    "Japan",
-    "Ethiopia",
-    "Philippines",
-    "Egypt",
-    "Vietnam",
-    "DR Congo",
-    "Turkey",
-    "Iran",
-    "Germany",
-    "Thailand",
-    "United Kingdom",
-  ];
+  const countries = ["Nepal", "China", "India", "United States", "Indonesia"];
+  const navigate = useNavigate();
 
-  const { count, total } = useContext(MovieContext);
+  const {
+    count,
+    total,
+    totalAfterTax,
+    setFormData,
+    setTotalAfterTax,
+  } = useContext(MovieContext);
   const { register, handleSubmit } = useForm();
-  const [formData, setFormData] = useState([]);
 
-  const totalAfterTax = total + 130.0;
+  setTotalAfterTax(total + 130.0);
 
   const onSubmit = (data) => {
     setFormData(data);
@@ -40,6 +24,7 @@ const Order = () => {
 
   const handleConfirmAndPay = () => {
     handleSubmit(onSubmit)();
+    navigate("/invoice");
   };
 
   return (
@@ -160,7 +145,6 @@ const Order = () => {
             </div>
           </div>
         </form>
-        {formData}
       </div>
 
       <div className="bg-[#1C1C24] h-auto p-5 rounded border-[#252D3C] border-2 mb-0">

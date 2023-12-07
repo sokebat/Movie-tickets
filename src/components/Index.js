@@ -4,6 +4,7 @@ import Concerts from "../pages/Concerts";
 import Movies from "../pages/Movies";
 import Eventdetails from "../pages/Eventdetails";
 import Order from "../pages/Order";
+import Invoice from "../pages/Invoice";
 
 
-export { Home, Layout, Concerts, Movies, Eventdetails, Order }
+export { Home, Layout, Concerts, Movies, Eventdetails, Order, Invoice }
