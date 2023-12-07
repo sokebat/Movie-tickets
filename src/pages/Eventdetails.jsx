@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import Card from "../components/Card";
+import Card from "../components/Card/Card";
 import { useNavigate, useParams } from "react-router-dom";
 import { IoCalendarSharp, IoLocationSharp } from "react-icons/io5";
 import { GoPlus } from "react-icons/go";
@@ -11,7 +11,6 @@ const Eventdetails = () => {
     useContext(MovieContext);
   const { id } = useParams();
   const movie = movies[id];
-
   setTickets(movie);
 
   const navigate = useNavigate();
@@ -35,7 +34,7 @@ const Eventdetails = () => {
           <div>
             <p className="text-white font-semibold">Date and Time</p>
             <p className="text-white font-semibold">
-              Sat, Apr 30, 2022 11:30 AM
+              Sat, Apr 30, {movie && movie.Year ? movie.Year : ""} 11:30 AM
             </p>
           </div>
         </section>

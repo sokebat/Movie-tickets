@@ -18,7 +18,6 @@ const Information = () => {
   setTotalAfterTax(total + 130.0);
 
   const onSubmit = (data) => {
-    console.log(data);
     setFormData(data);
     navigate("/invoice");
   };

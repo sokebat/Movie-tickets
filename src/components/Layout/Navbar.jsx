@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <div className=" bg-[#252D3C] flex items-center justify-around p-3">
-      <div className=" flex items-center gap-2">
+      <Link to="/" className=" flex items-center gap-2">
         <FaRegPaperPlane color="white" size={23} />
         <span className="text-white text-xl  hover:text-blue-200">
           TickTicketing
         </span>
-      </div>
+      </Link>
 
       <div className="hidden  md:flex space-x-6">
         <Link to="/" className=" text-white text-xl hover:text-blue-200">
