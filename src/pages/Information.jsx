@@ -24,7 +24,7 @@ const Information = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex justify-around items-center">
+      <div className="flex justify-around items-center mt-6 ">
         <div className="bg-[#1C1C24] p-8 rounded shadow-md w-1/2 my-4 sm:mb-0 border-[#252D3C] border-2">
           <h2 className="text-2xl font-bold mb-4 text-white">Information</h2>
 

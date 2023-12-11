@@ -8,7 +8,7 @@ const Navbar = () => {
       <Link to="/" className=" flex items-center gap-2">
         <FaRegPaperPlane color="white" size={23} />
         <span className="text-white text-xl  hover:text-blue-200">
-          TickTicketing
+          Movie-tickets
         </span>
       </Link>
 
@@ -41,7 +41,7 @@ const Navbar = () => {
         <button
           className="text-white text-xl p-2 rounded-lg hover:text-blue-200"
           type="button"
-          style={{ backgroundColor: "#E14658" }}
+          style={{ backgroundColor: "#A15658" }}
         >
           Register
         </button>

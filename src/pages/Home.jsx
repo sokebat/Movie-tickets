@@ -8,7 +8,7 @@ const Home = () => {
 
   return (
     <div className=" container mx-auto mt-5 p-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {movies ? (
           movies.map((movie, i) => (
             <Link key={i} to={`/event-detail/${i}`}>
