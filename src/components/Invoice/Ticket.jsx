@@ -7,7 +7,7 @@ const Ticket = () => {
 
   return (
     <div className="max-w-sm rounded overflow-hidden p-4 border-2 bg-white">
-      <div className="flex gap-3">
+      <div className="flex flex-wrap items-center justify-center gap-3">
         <div className="relative w-16 h-24">
           <img
             className="object-cover w-full h-full rounded"

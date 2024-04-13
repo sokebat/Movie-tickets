@@ -23,9 +23,9 @@ const Information = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex justify-around items-center mt-6 ">
-        <div className="bg-[#1C1C24] p-8 rounded shadow-md w-1/2 my-4 sm:mb-0 border-[#252D3C] border-2">
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center justify-center h-[100vh]">
+      <div className="flex flex-wrap gap-y-5 gap-4 justify-around items-center mt-6 container px-5 mx-auto ">
+        <div className="bg-[#1C1C24] p-8 rounded shadow-md   my-4 sm:mb-0 border-[#252D3C] border-2">
           <h2 className="text-2xl font-bold mb-4 text-white">Information</h2>
 
           <div>
@@ -53,152 +53,162 @@ const Information = () => {
               )}
             </div>
 
-            <div className="grid grid-rows-3 grid-flow-col gap-4">
-              <div className="mb-4 sm:mb-0">
-                <label
-                  className="block text-sm font-semibold mb-2 text-white"
-                  htmlFor="email"
-                >
-                  Email
-                </label>
-                <input
-                  {...register("email", {
-                    required: "This field is required",
-                    pattern: {
-                      value:
-                        /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/i,
-                      message: "Invalid email address",
-                    },
-                  })}
-                  placeholder="eg. janecopper@xyz.com"
-                  className={`w-full p-2 bg-[#1C1C24] border-[#252D3C] border-2 rounded text-white ${
-                    errors.email ? "border-red-500" : ""
-                  }`}
-                />
-                {errors.email && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.email.message}
-                  </p>
-                )}
+            <div className=" flex flex-col gap-y-4 ">
+              <div className=" flex justify-between gap-4 flex-wrap">
+                <div className="mb-4 sm:mb-0  ">
+                  <label
+                    className="block text-sm font-semibold mb-2 text-white"
+                    htmlFor="email"
+                  >
+                    Email
+                  </label>
+                  <input
+                    {...register("email", {
+                      required: "This field is required",
+                      pattern: {
+                        value:
+                          /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/i,
+                        message: "Invalid email address",
+                      },
+                    })}
+                    placeholder="eg. janecopper@xyz.com"
+                    className={`w-full p-2 bg-[#1C1C24] border-[#252D3C] border-2 rounded text-white ${
+                      errors.email ? "border-red-500" : ""
+                    }`}
+                  />
+                  {errors.email && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.email.message}
+                    </p>
+                  )}
+                </div>
+
+                <div className="mb-4 sm:mb-0">
+                  <label
+                    className="block text-sm font-semibold mb-2 text-white"
+                    htmlFor="address"
+                  >
+                    Address
+                  </label>
+                  <input
+                    {...register("address", {
+                      required: "This field is required",
+                    })}
+                    placeholder="eg. 123 Main Street"
+                    className={`w-full p-2 bg-[#1C1C24] border-[#252D3C] border-2 rounded text-white ${
+                      errors.address ? "border-red-500" : ""
+                    }`}
+                  />
+                  {errors.address && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.address.message}
+                    </p>
+                  )}
+                </div>
               </div>
 
-              <div className="mb-4 sm:mb-0">
-                <label
-                  className="block text-sm font-semibold mb-2 text-white"
-                  htmlFor="address"
-                >
-                  Address
-                </label>
-                <input
-                  {...register("address", {
-                    required: "This field is required",
-                  })}
-                  placeholder="eg. 123 Main Street"
-                  className={`w-full p-2 bg-[#1C1C24] border-[#252D3C] border-2 rounded text-white ${
-                    errors.address ? "border-red-500" : ""
-                  }`}
-                />
-                {errors.address && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.address.message}
-                  </p>
-                )}
-              </div>
-
-              <div className="mb-4 sm:mb-0">
-                <label
-                  className="block text-sm font-semibold mb-2 text-white"
-                  htmlFor="country"
-                >
-                  Country
-                </label>
-                <select
-                  {...register("country", {
-                    required: "This field is required",
-                  })}
-                  className={`w-full p-2 bg-[#1C1C24] border-[#252D3C] border-2 rounded text-white ${
-                    errors.country ? "border-red-500" : ""
-                  }`}
-                >
-                  <option value="" disabled>
-                    Select Country
-                  </option>
-                  {countries.map((country, index) => (
-                    <option key={index} value={country}>
-                      {country}
+              <div className=" flex justify-between gap-4 flex-wrap">
+                {" "}
+                <div className="mb-4 sm:mb-0">
+                  <label
+                    className="block text-sm font-semibold mb-2 text-white"
+                    htmlFor="country"
+                  >
+                    Country
+                  </label>
+                  <select
+                    {...register("country", {
+                      required: "This field is required",
+                    })}
+                    className={`w-full p-2 bg-[#1C1C24] border-[#252D3C] border-2 rounded text-white ${
+                      errors.country ? "border-red-500" : ""
+                    }`}
+                  >
+                    <option value="" disabled>
+                      Select Country
                     </option>
-                  ))}
-                </select>
-                {errors.country && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.country.message}
-                  </p>
-                )}
+                    {countries.map((country, index) => (
+                      <option key={index} value={country}>
+                        {country}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.country && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.country.message}
+                    </p>
+                  )}
+                </div>
+                <div className="mb-4 sm:mb-0">
+                  <label
+                    className="block text-sm font-semibold mb-2 text-white"
+                    htmlFor="state"
+                  >
+                    State
+                  </label>
+                  <input
+                    {...register("state", {
+                      required: "This field is required",
+                    })}
+                    placeholder="Your State"
+                    className={`w-full p-2 bg-[#1C1C24] border-[#252D3C] border-2 rounded text-white ${
+                      errors.state ? "border-red-500" : ""
+                    }`}
+                  />
+                  {errors.state && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.state.message}
+                    </p>
+                  )}
+                </div>
               </div>
 
-              <div className="mb-4 sm:mb-0">
-                <label
-                  className="block text-sm font-semibold mb-2 text-white"
-                  htmlFor="state"
-                >
-                  State
-                </label>
-                <input
-                  {...register("state", { required: "This field is required" })}
-                  placeholder="Your State"
-                  className={`w-full p-2 bg-[#1C1C24] border-[#252D3C] border-2 rounded text-white ${
-                    errors.state ? "border-red-500" : ""
-                  }`}
-                />
-                {errors.state && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.state.message}
-                  </p>
-                )}
-              </div>
+              <div className=" flex justify-between gap-4 flex-wrap">
+                <div className="mb-4 sm:mb-0">
+                  <label
+                    className="block text-sm font-semibold mb-2 text-white"
+                    htmlFor="city"
+                  >
+                    City
+                  </label>
+                  <input
+                    {...register("city", {
+                      required: "This field is required",
+                    })}
+                    placeholder="Your City"
+                    className={`w-full p-2 bg-[#1C1C24] border-[#252D3C] border-2 rounded text-white ${
+                      errors.city ? "border-red-500" : ""
+                    }`}
+                  />
+                  {errors.city && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.city.message}
+                    </p>
+                  )}
+                </div>
 
-              <div className="mb-4 sm:mb-0">
-                <label
-                  className="block text-sm font-semibold mb-2 text-white"
-                  htmlFor="city"
-                >
-                  City
-                </label>
-                <input
-                  {...register("city", { required: "This field is required" })}
-                  placeholder="Your City"
-                  className={`w-full p-2 bg-[#1C1C24] border-[#252D3C] border-2 rounded text-white ${
-                    errors.city ? "border-red-500" : ""
-                  }`}
-                />
-                {errors.city && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.city.message}
-                  </p>
-                )}
-              </div>
-
-              <div className="mb-4 sm:mb-0">
-                <label
-                  className="block text-sm font-semibold mb-2 text-white"
-                  htmlFor="zipCode"
-                >
-                  Zip/Post Code
-                </label>
-                <input
-                  {...register("postCode", {
-                    required: "This field is required",
-                  })}
-                  placeholder="Your Zip/Post Code"
-                  className={`w-full p-2 bg-[#1C1C24] border-[#252D3C] border-2 rounded text-white ${
-                    errors.postCode ? "border-red-500" : ""
-                  }`}
-                />
-                {errors.postCode && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.postCode.message}
-                  </p>
-                )}
+                <div className="mb-4 sm:mb-0">
+                  <label
+                    className="block text-sm font-semibold mb-2 text-white"
+                    htmlFor="zipCode"
+                  >
+                    Zip/Post Code
+                  </label>
+                  <input
+                    {...register("postCode", {
+                      required: "This field is required",
+                    })}
+                    placeholder="Your Zip/Post Code"
+                    className={`w-full p-2 bg-[#1C1C24] border-[#252D3C] border-2 rounded text-white ${
+                      errors.postCode ? "border-red-500" : ""
+                    }`}
+                  />
+                  {errors.postCode && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.postCode.message}
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
             {/* <button type="submit">Submit</button> */}
