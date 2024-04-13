@@ -20,13 +20,13 @@ const Eventdetails = () => {
   }, [count]);
 
   return (
-    <div className="h-[100vh] flex flex-col items-center justify-center">
-      <div className=" container  mx-auto flex justify-around  items-center    ">
-        <div className=" ">
+    <div className="  flex flex-col items-center justify-center">
+      <div className=" container  mx-auto flex justify-around flex-wrap gap-4 items-center  mt-12   ">
+        <div className="   ">
           <Card {...movie} />
         </div>
 
-        <div className="p-6 bg-[#1C1C24] w-2/6 rounded-lg ">
+        <div className="p-6 bg-[#1C1C24]   rounded-lg ">
           <h2 className="text-2xl text-white font-semibold m-2">
             Event Details
           </h2>

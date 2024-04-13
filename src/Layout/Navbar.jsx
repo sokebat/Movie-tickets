@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <div className="bg-[#252D3C] w-full">
-      <div className="container mx-auto flex items-center justify-between p-3">
+      <div className="container mx-auto flex items-center justify-between flex-wrap p-3">
         <Link to="/" className="flex items-center gap-2" onClick={closeMenu}>
           <FaRegPaperPlane color="white" size={23} />
           <span className="text-white text-xl hover:text-blue-200">
